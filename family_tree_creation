@@ -1,0 +1,24 @@
+CREATE TABLE familyTree(
+person_id INT NOT NULL PRIMARY KEY,
+FIRST_NAME CHAR(25),
+parent_id INT
+);
+
+INSERT INTO familyTree
+(person_id, FIRST_NAME, parent_id) VALUES
+(001, 'a', null),
+(002, 'b', 001),
+(003, 'c', 001),
+(004, 'd', 002),
+(005, 'e', 002),
+(006, 'f', 003),
+(007, 'g', 005),
+(008, 'h', 005);
+
+CREATE TABLE familyTree2(
+ID int PRIMARY KEY,
+Name char NULL,
+ParentID int NULL);
+
+INSERT INTO familyTree2(ID,Name,ParentID)
+VALUES (1,"A",Null), (2,"B",1), (3,"C",1), (4,"D",2), (5,"E",2), (8,"F",3), (6,"G",5), (7,"H",5);
