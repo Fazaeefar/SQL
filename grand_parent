@@ -1,0 +1,25 @@
+	
+	-- finding grand parent for a particular id 
+
+	with cte (ID, Name, ParentID, lvl) as(
+	  select *, 0
+	  from familyTree
+	  where ID = 10
+	  
+	  union ALL
+	  
+	  select f.*, cte.lvl + 1
+	  from familyTree as f
+	  join cte
+	  on f.ID = cte.ParentID
+	  )
+	  -- select * from cte;
+	  
+	  -- lvl = 1 for parent 
+	  -- lvl = 2 for grand parent
+	  -- and so on
+	  
+	 SELECT * FROM cte
+	 order by lvl desc;
+	 
+	 
