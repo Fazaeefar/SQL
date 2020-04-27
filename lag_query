@@ -1,0 +1,9 @@
+SELECT c.CustomerId, it.Quantity, it.UnitPrice, i.InvoiceDate,
+(it.Quantity * it.UnitPrice) as price,
+lag(it.Quantity * it.UnitPrice, 1, 0) over (partition by c.CustomerId order by i.InvoiceDate) AS previousOrder,
+((it.Quantity * it.UnitPrice) - lag(it.Quantity * it.UnitPrice, 1, 0) over(partition by c.CustomerId order by i.InvoiceDate)) AS Difference
+FROM customers AS c
+JOIN invoices AS i
+ON i.CustomerId = c.CustomerId
+JOIN invoice_items AS it
+ON it.InvoiceId = i.InvoiceId;
