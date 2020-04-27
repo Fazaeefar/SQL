@@ -1,0 +1,16 @@
+CREATE TABLE familyTree(
+ID int PRIMARY KEY,
+Name char NULL,
+ParentID int NULL);
+
+INSERT INTO familyTree
+(person_id, FIRST_NAME, parent_id) VALUES
+(001, 'a', null),
+(002, 'b', 001),
+(003, 'c', 001),
+(004, 'd', 002),
+(005, 'e', 002),
+(006, 'f', 003),
+(007, 'g', 005),
+(008, 'h', 005);
+
