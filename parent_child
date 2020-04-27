@@ -1,0 +1,14 @@
+
+with cte as(
+  select * 
+  from familyTree2
+  where ID = 6
+  
+  union ALL
+  
+  select f.*
+  from familyTree2 as f
+  join cte
+  on f.ID = cte.ParentID
+  )
+ SELECT * FROM cte;
