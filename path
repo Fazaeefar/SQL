@@ -1,0 +1,21 @@
+	select * from familyTree;
+
+	-- finding the family tree for a particular id
+
+	with cte (ID, Name, ParentID, lvl, pathway) as(
+	  select *, 0, FamilyTree.name as pathway
+	  from familyTree
+	  where ID = 10
+	  
+	  union ALL
+	  
+	  select f.*, cte.lvl + 1,  f.name || cte.pathway
+	  --select f.*, cte.lvl + 1, cte.pathway || cte.name
+	  from familyTree as f
+	  join cte
+	  on f.ID = cte.ParentID
+	  ) 
+	 SELECT * FROM cte
+	 order by lvl desc;
+	 
+	 
