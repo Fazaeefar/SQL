@@ -1,0 +1,16 @@
+CREATE TABLE familyTreeAge(
+ID int PRIMARY KEY,
+Name char NULL, 
+ParentID int NULL,
+Age int NOT NULL);
+
+INSERT INTO familyTreeAge(ID,Name,ParentID,Age)
+VALUES (1,"A",Null,70),
+		(2,"B",1,65),
+		(3,"C",1,60),
+		(4,"D",2,55),
+		(5,"E",2,50),
+		(8,"F",3,45),
+		(6,"G",5,40),
+		(7,"H",5,35);
+		

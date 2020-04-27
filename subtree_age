@@ -1,0 +1,15 @@
+WITH subTreeAgeCte(ID,Name,ParentID,Age) AS( 
+		-- find root
+		SELECT * 
+        FROM familyTreeAge
+		WHERE familyTreeAge.ID = 5
+		
+    UNION ALL
+	
+    SELECT f.*
+        FROM familyTreeAge as f
+		JOIN subTreeAgeCte  
+		ON subTreeAgeCte.ID = f.ParentID
+)
+SELECT SUM(Age) AS subTreeAgeSum
+FROM subTreeAgeCte;
